@@ -20,7 +20,6 @@
 		32E73CF71ABDA95D00186370 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E73CF51ABDA95D00186370 /* MainMenu.xib */; };
 		32E73D0C1ABDA9BB00186370 /* CleanFrameView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E73CC31ABDA84600186370 /* CleanFrameView.framework */; };
 		32E73D0E1ABDAA6800186370 /* CleanFrameView.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 32E73CC31ABDA84600186370 /* CleanFrameView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		32E73D101ABDAAD400186370 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 32E73D0F1ABDAAD400186370 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		328BBD401ABDB47600523735 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		32E73CC31ABDA84600186370 /* CleanFrameView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CleanFrameView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32E73CC71ABDA84600186370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32E73CC81ABDA84600186370 /* CleanFrameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CleanFrameView.h; sourceTree = "<group>"; };
@@ -71,7 +71,6 @@
 		32E73CF11ABDA95D00186370 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32E73CF31ABDA95D00186370 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		32E73CF61ABDA95D00186370 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		32E73D0F1ABDAAD400186370 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +103,7 @@
 		32E73CB91ABDA84600186370 = {
 			isa = PBXGroup;
 			children = (
-				32E73D0F1ABDAAD400186370 /* README.md */,
+				328BBD401ABDB47600523735 /* README.md */,
 				32E73CC51ABDA84600186370 /* CleanFrameView */,
 				32E73CD21ABDA84600186370 /* CleanFrameViewTests */,
 				32E73CEE1ABDA95D00186370 /* CleanFrameViewSample */,
@@ -324,7 +323,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32E73D101ABDAAD400186370 /* README.md in Sources */,
 				32E73CE81ABDA88800186370 /* CleanFrameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,6 +567,7 @@
 				32E73CDB1ABDA84600186370 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		32E73CDC1ABDA84600186370 /* Build configuration list for PBXNativeTarget "CleanFrameViewTests" */ = {
 			isa = XCConfigurationList;
@@ -577,6 +576,7 @@
 				32E73CDE1ABDA84600186370 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		32E73D041ABDA95D00186370 /* Build configuration list for PBXNativeTarget "CleanFrameViewSample" */ = {
 			isa = XCConfigurationList;
@@ -585,6 +585,7 @@
 				32E73D061ABDA95D00186370 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
