@@ -12,6 +12,11 @@ import Appkit
 
 public class CleanFrameView : NSView {
     
+    let northWestSouthEastCursor: NSCursor
+    let northeastsouthwestCursor: NSCursor
+    let eastWestCursor: NSCursor
+    let northSouthCursor: NSCursor
+    
     public var cornerRadius: CGFloat = 5 {
         didSet {
             self.cacheImage = nil
@@ -65,6 +70,27 @@ public class CleanFrameView : NSView {
     }
     
     public override init(frame frameRect: NSRect) {
+        
+        // \
+        let northWestSouthEastPath = NSString(format: "%@/Contents/Frameworks/CleanFrameView.framework/Resources/resizenorthwestsoutheast.pdf", NSBundle.mainBundle().bundlePath)
+        let northWestSouthEastImage = NSImage(contentsOfFile: northWestSouthEastPath)!
+        self.northWestSouthEastCursor = NSCursor(image: northWestSouthEastImage, hotSpot: NSPoint(x: northWestSouthEastImage.size.width/2, y:northWestSouthEastImage.size.height/2))
+        
+        // /
+        let northeastsouthwestPath = NSString(format: "%@/Contents/Frameworks/CleanFrameView.framework/Resources/resizenortheastsouthwest.pdf", NSBundle.mainBundle().bundlePath)
+        let northeastsouthwestImage = NSImage(contentsOfFile: northeastsouthwestPath)!
+        self.northeastsouthwestCursor = NSCursor(image: northeastsouthwestImage, hotSpot: NSPoint(x: northeastsouthwestImage.size.width/2, y:northeastsouthwestImage.size.height/2))
+        
+        // -
+        let eastWestPath = NSString(format: "%@/Contents/Frameworks/CleanFrameView.framework/Resources/resizeeastwest.pdf", NSBundle.mainBundle().bundlePath)
+        let eastWestImage = NSImage(contentsOfFile: eastWestPath)!
+        self.eastWestCursor = NSCursor(image: eastWestImage, hotSpot: NSPoint(x: eastWestImage.size.width/2, y:eastWestImage.size.height/2))
+        
+        // |
+        let northSouthPath = NSString(format: "%@/Contents/Frameworks/CleanFrameView.framework/Resources/resizenorthsouth.pdf", NSBundle.mainBundle().bundlePath)
+        let northSouthImage = NSImage(contentsOfFile: northSouthPath)!
+        self.northSouthCursor = NSCursor(image: northSouthImage, hotSpot: NSPoint(x: northSouthImage.size.width/2, y:northSouthImage.size.height/2))
+        
         super.init(frame: frameRect)
         self.wantsLayer = false // YES will made text drawing a little thinner compared to textview
     }
@@ -124,28 +150,8 @@ public class CleanFrameView : NSView {
     
     override public func resetCursorRects() {
         
-        // \
-        let northWestSouthEastPath = NSString(format: "%@/Contents/Frameworks/CleanFrameView.framework/Resources/resizenorthwestsoutheast.pdf", NSBundle.mainBundle().bundlePath)
-        let northWestSouthEastImage = NSImage(contentsOfFile: northWestSouthEastPath)!
-        let northWestSouthEastCursor = NSCursor(image: northWestSouthEastImage, hotSpot: NSPoint(x: northWestSouthEastImage.size.width/2, y:northWestSouthEastImage.size.height/2))
-        
-        // /
-        let northeastsouthwestPath = NSString(format: "%@/Contents/Frameworks/CleanFrameView.framework/Resources/resizenortheastsouthwest.pdf", NSBundle.mainBundle().bundlePath)
-        let northeastsouthwestImage = NSImage(contentsOfFile: northeastsouthwestPath)!
-        let northeastsouthwestCursor = NSCursor(image: northeastsouthwestImage, hotSpot: NSPoint(x: northeastsouthwestImage.size.width/2, y:northeastsouthwestImage.size.height/2))
-        
-        // -
-        let eastWestPath = NSString(format: "%@/Contents/Frameworks/CleanFrameView.framework/Resources/resizeeastwest.pdf", NSBundle.mainBundle().bundlePath)
-        let eastWestImage = NSImage(contentsOfFile: eastWestPath)!
-        let eastWestCursor = NSCursor(image: eastWestImage, hotSpot: NSPoint(x: eastWestImage.size.width/2, y:eastWestImage.size.height/2))
-        
-        // |
-        let northSouthPath = NSString(format: "%@/Contents/Frameworks/CleanFrameView.framework/Resources/resizenorthsouth.pdf", NSBundle.mainBundle().bundlePath)
-        let northSouthImage = NSImage(contentsOfFile: northSouthPath)!
-        let northSouthCursor = NSCursor(image: northSouthImage, hotSpot: NSPoint(x: northSouthImage.size.width/2, y:northSouthImage.size.height/2))
-        
         let directionHelper = self.buildDirectionHelper()
-        
+
         self.addCursorRect(directionHelper.rectForDirection(.North), cursor: northSouthCursor)
         self.addCursorRect(directionHelper.rectForDirection(.NorthEast), cursor: northeastsouthwestCursor)
         self.addCursorRect(directionHelper.rectForDirection(.East), cursor: eastWestCursor)
