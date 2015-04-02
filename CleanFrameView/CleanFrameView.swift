@@ -12,15 +12,53 @@ import Appkit
 
 public class CleanFrameView : NSView {
     
-    public var cornerRadius: CGFloat = 5
-    public var shadowBlurRadius: CGFloat = 15
-    public var shadowColor = NSColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.085)
-    public var backgroundColor = NSColor.whiteColor()
-    public var strokeColor = NSColor(calibratedRed: 220/255, green: 220/255, blue: 220/255, alpha: 1)
-    public var strokeLineWidth: CGFloat = 0.5
+    public var cornerRadius: CGFloat = 5 {
+        didSet {
+            self.cacheImage = nil
+            self.needsDisplay = true
+        }
+    }
+    
+    public var shadowBlurRadius: CGFloat = 15 {
+        didSet {
+            self.cacheImage = nil
+            self.needsDisplay = true
+        }
+    }
+    
+    public var shadowColor: NSColor = NSColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.085) {
+        didSet {
+            self.cacheImage = nil
+            self.needsDisplay = true
+        }
+    }
+    
+    public var backgroundColor: NSColor = NSColor.whiteColor() {
+        didSet {
+            self.cacheImage = nil
+            self.needsDisplay = true
+        }
+    }
+    
+    public var strokeColor: NSColor = NSColor(calibratedRed: 220/255, green: 220/255, blue: 220/255, alpha: 1) {
+        didSet {
+            self.cacheImage = nil
+            self.needsDisplay = true
+        }
+    }
+    
+    public var strokeLineWidth: CGFloat = 0.5 {
+        didSet {
+            self.cacheImage = nil
+            self.needsDisplay = true
+        }
+    }
     
     let resizeInsetCornerWidth = CGFloat(10.0)
     let resizeInsetSideWidth = CGFloat(2.0)
+    
+    var cacheImageSize = NSSize()
+    var cacheImage: NSImage?
     
     public override var alignmentRectInsets: NSEdgeInsets {
         return NSEdgeInsets(top: self.shadowBlurRadius, left: self.shadowBlurRadius, bottom: self.shadowBlurRadius, right: self.shadowBlurRadius)
@@ -34,6 +72,55 @@ public class CleanFrameView : NSView {
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    override public func drawRect(dirtyRect: NSRect) {
+        
+        if (!NSEqualSizes(self.cacheImageSize, self.bounds.size) || self.cacheImage == nil) {
+            self.cacheImageSize = self.bounds.size
+            self.cacheImage = NSImage(size: self.bounds.size)
+            self.cacheImage!.lockFocus()
+
+            var rect = self.bounds
+            rect.inset(dx: self.shadowBlurRadius, dy: self.shadowBlurRadius)
+            
+            NSGraphicsContext.saveGraphicsState()
+            
+            let shadow = NSShadow()
+            shadow.shadowColor = self.shadowColor
+            shadow.shadowBlurRadius = self.shadowBlurRadius
+            shadow.set()
+            
+            let backgroundPath = NSBezierPath(roundedRect: rect, xRadius: self.cornerRadius, yRadius: self.cornerRadius)
+            self.backgroundColor.setFill()
+            backgroundPath.fill()
+            
+            NSGraphicsContext.restoreGraphicsState()
+            
+            rect.origin.x += 0.5
+            rect.origin.y += 0.5
+            let borderPath = NSBezierPath(roundedRect: rect, xRadius: self.cornerRadius, yRadius: self.cornerRadius)
+            //        let borderPath = NSBezierPath(rect: rect)
+            borderPath.lineWidth = self.strokeLineWidth
+            
+            self.strokeColor.setStroke()
+            borderPath.stroke()
+            
+            // NSColor.redColor().setFill()
+            // NSRectFill(self.resizeRect())
+
+            self.cacheImage!.unlockFocus()
+            // println("set cache");
+        } else {
+            // println("load cache");
+        }
+        
+        self.cacheImage!.drawAtPoint(NSPoint(), fromRect: NSRect(), operation:  .CompositeCopy, fraction: 1)
+
+        
+    }
+
+    // MARK:  Cursor
     
     override public func resetCursorRects() {
         
@@ -67,36 +154,6 @@ public class CleanFrameView : NSView {
         self.addCursorRect(directionHelper.rectForDirection(.SouthWest), cursor: northeastsouthwestCursor)
         self.addCursorRect(directionHelper.rectForDirection(.West), cursor: eastWestCursor)
         self.addCursorRect(directionHelper.rectForDirection(.NorthWest), cursor: northWestSouthEastCursor)
-    }
-    
-    override public func drawRect(dirtyRect: NSRect) {
-        var rect = self.bounds
-        rect.inset(dx: self.shadowBlurRadius, dy: self.shadowBlurRadius)
-        
-        NSGraphicsContext.saveGraphicsState()
-        
-        let shadow = NSShadow()
-        shadow.shadowColor = self.shadowColor
-        shadow.shadowBlurRadius = self.shadowBlurRadius
-        shadow.set()
-        
-        let backgroundPath = NSBezierPath(roundedRect: rect, xRadius: self.cornerRadius, yRadius: self.cornerRadius)
-        self.backgroundColor.setFill()
-        backgroundPath.fill()
-        
-        NSGraphicsContext.restoreGraphicsState()
-        
-        rect.origin.x += 0.5
-        rect.origin.y += 0.5
-        let borderPath = NSBezierPath(roundedRect: rect, xRadius: self.cornerRadius, yRadius: self.cornerRadius)
-        //        let borderPath = NSBezierPath(rect: rect)
-        borderPath.lineWidth = self.strokeLineWidth
-        
-        self.strokeColor.setStroke()
-        borderPath.stroke()
-        
-        // NSColor.redColor().setFill()
-        // NSRectFill(self.resizeRect())
     }
     
     private func buildDirectionHelper() -> CardinalDirectionHelper {

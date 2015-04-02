@@ -9,8 +9,6 @@
 import Cocoa
 import CleanFrameView
 
-external NSString * const DocumentationURL;
-
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
