@@ -7,7 +7,7 @@
 //
 
 
-import Appkit
+import AppKit
 
 
 public class CleanFrameView : NSView {
@@ -73,22 +73,22 @@ public class CleanFrameView : NSView {
         
         // \
         let northWestSouthEastPath = NSString(format: "%@/Contents/Frameworks/CleanFrameView.framework/Resources/resizenorthwestsoutheast.pdf", NSBundle.mainBundle().bundlePath)
-        let northWestSouthEastImage = NSImage(contentsOfFile: northWestSouthEastPath)!
+        let northWestSouthEastImage = NSImage(contentsOfFile: northWestSouthEastPath as String)!
         self.northWestSouthEastCursor = NSCursor(image: northWestSouthEastImage, hotSpot: NSPoint(x: northWestSouthEastImage.size.width/2, y:northWestSouthEastImage.size.height/2))
         
         // /
         let northeastsouthwestPath = NSString(format: "%@/Contents/Frameworks/CleanFrameView.framework/Resources/resizenortheastsouthwest.pdf", NSBundle.mainBundle().bundlePath)
-        let northeastsouthwestImage = NSImage(contentsOfFile: northeastsouthwestPath)!
+        let northeastsouthwestImage = NSImage(contentsOfFile: northeastsouthwestPath as String)!
         self.northeastsouthwestCursor = NSCursor(image: northeastsouthwestImage, hotSpot: NSPoint(x: northeastsouthwestImage.size.width/2, y:northeastsouthwestImage.size.height/2))
         
         // -
         let eastWestPath = NSString(format: "%@/Contents/Frameworks/CleanFrameView.framework/Resources/resizeeastwest.pdf", NSBundle.mainBundle().bundlePath)
-        let eastWestImage = NSImage(contentsOfFile: eastWestPath)!
+        let eastWestImage = NSImage(contentsOfFile: eastWestPath as String)!
         self.eastWestCursor = NSCursor(image: eastWestImage, hotSpot: NSPoint(x: eastWestImage.size.width/2, y:eastWestImage.size.height/2))
         
         // |
         let northSouthPath = NSString(format: "%@/Contents/Frameworks/CleanFrameView.framework/Resources/resizenorthsouth.pdf", NSBundle.mainBundle().bundlePath)
-        let northSouthImage = NSImage(contentsOfFile: northSouthPath)!
+        let northSouthImage = NSImage(contentsOfFile: northSouthPath as String)!
         self.northSouthCursor = NSCursor(image: northSouthImage, hotSpot: NSPoint(x: northSouthImage.size.width/2, y:northSouthImage.size.height/2))
         
         super.init(frame: frameRect)
