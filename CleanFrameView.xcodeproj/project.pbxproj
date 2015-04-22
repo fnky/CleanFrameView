@@ -20,6 +20,10 @@
 		32E73CF71ABDA95D00186370 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E73CF51ABDA95D00186370 /* MainMenu.xib */; };
 		32E73D0C1ABDA9BB00186370 /* CleanFrameView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E73CC31ABDA84600186370 /* CleanFrameView.framework */; };
 		32E73D0E1ABDAA6800186370 /* CleanFrameView.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 32E73CC31ABDA84600186370 /* CleanFrameView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		32F66CD41AE4DFDD004E315E /* AttachedCleanFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F66CD31AE4DFDD004E315E /* AttachedCleanFrameView.swift */; };
+		32F66CD61AE4E42F004E315E /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F66CD51AE4E42F004E315E /* Window.xib */; };
+		32F66CD81AE4E518004E315E /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F66CD71AE4E518004E315E /* WindowController.swift */; };
+		32F66CDA1AE4ECE1004E315E /* CardinalDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F66CD91AE4ECE1004E315E /* CardinalDirection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,10 @@
 		32E73CF11ABDA95D00186370 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32E73CF31ABDA95D00186370 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		32E73CF61ABDA95D00186370 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		32F66CD31AE4DFDD004E315E /* AttachedCleanFrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachedCleanFrameView.swift; sourceTree = "<group>"; };
+		32F66CD51AE4E42F004E315E /* Window.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Window.xib; sourceTree = "<group>"; };
+		32F66CD71AE4E518004E315E /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		32F66CD91AE4ECE1004E315E /* CardinalDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardinalDirection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +138,8 @@
 				32E73CE21ABDA86100186370 /* resizenorthwestsoutheast.pdf */,
 				32E73CC81ABDA84600186370 /* CleanFrameView.h */,
 				32E73CE71ABDA88800186370 /* CleanFrameView.swift */,
+				32F66CD31AE4DFDD004E315E /* AttachedCleanFrameView.swift */,
+				32F66CD91AE4ECE1004E315E /* CardinalDirection.swift */,
 				32E73CC61ABDA84600186370 /* Supporting Files */,
 			);
 			path = CleanFrameView;
@@ -167,6 +177,8 @@
 				32E73CF31ABDA95D00186370 /* Images.xcassets */,
 				32E73CF51ABDA95D00186370 /* MainMenu.xib */,
 				32E73CEF1ABDA95D00186370 /* Supporting Files */,
+				32F66CD51AE4E42F004E315E /* Window.xib */,
+				32F66CD71AE4E518004E315E /* WindowController.swift */,
 			);
 			path = CleanFrameViewSample;
 			sourceTree = "<group>";
@@ -313,6 +325,7 @@
 			files = (
 				32E73CF41ABDA95D00186370 /* Images.xcassets in Resources */,
 				32E73CF71ABDA95D00186370 /* MainMenu.xib in Resources */,
+				32F66CD61AE4E42F004E315E /* Window.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +336,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32F66CD41AE4DFDD004E315E /* AttachedCleanFrameView.swift in Sources */,
+				32F66CDA1AE4ECE1004E315E /* CardinalDirection.swift in Sources */,
 				32E73CE81ABDA88800186370 /* CleanFrameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32E73CF21ABDA95D00186370 /* AppDelegate.swift in Sources */,
+				32F66CD81AE4E518004E315E /* WindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
